@@ -3,7 +3,16 @@
 // in the html.
 
 //set current time to planner
+var hour = dayjs().get("hour");
 currentDay = $("#currentDay");
+
+var pmConverter = function () {
+  if (hour > 12) {
+    hour -= 12;
+  }
+  return hour;
+};
+//todays date and time
 var todaysDate =
   dayjs().get("date") +
   "/" +
@@ -11,14 +20,14 @@ var todaysDate =
   "/" +
   dayjs().get("year") +
   " " +
-  dayjs().get("hour") +
+  pmConverter() +
   ":" +
   dayjs().get("minute");
-console.log(todaysDate);
-
-currentDay.text(todaysDate);
 
 $(function () {
+  //sets time to header of app
+  currentDay.text(todaysDate);
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
