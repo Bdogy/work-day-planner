@@ -4,6 +4,8 @@
 
 //set current time to planner
 var hour = dayjs().get("hour");
+var main = $("#mainContainer");
+var saveButton = $(".saveBtn");
 currentDay = $("#currentDay");
 
 var pmConverter = function () {
@@ -24,10 +26,20 @@ var todaysDate =
   ":" +
   dayjs().get("minute");
 
+saveButton.click(function () {
+  var savedClick = $(event.target);
+  var store = savedClick.parent().children("textarea").val();
+  console.log(savedClick.parent().attr("id"));
+  console.log(store);
+  localStorage.setItem(
+    JSON.stringify(savedClick.parent().attr("id")),
+    JSON.stringify(store)
+  );
+});
+
 $(function () {
   //sets time to header of app
-  currentDay.text(todaysDate);
-
+  //loop 9 times for each time section then check if the current count is = to the current hour. if so apply current time. for ever time till 17 thats above thr current time apply future class to those elements
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
