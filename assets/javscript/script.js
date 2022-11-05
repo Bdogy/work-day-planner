@@ -31,7 +31,7 @@ var doubleDigitMinute = function () {
 };
 //todays date and time
 var todaysDate =
-  dayjs().get("month") +
+  dayjs().get("month + 1") +
   "/" +
   dayjs().get("date") +
   "/" +
