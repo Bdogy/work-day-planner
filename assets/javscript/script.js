@@ -4,6 +4,7 @@
 
 //set current time to planner
 // var hour = dayjs().get("hour");
+var timeBlockClass = "";
 var hour = dayjs().get("hour");
 var timeBlock = $(".time-block");
 var saveButton = $(".saveBtn");
@@ -41,11 +42,13 @@ saveButton.click(function () {
 
 $(function () {
   timeBlock.each(function (index) {
-    console.log(index);
+    $(this).addClass(timeBlockClass);
     //loops through time blocks
     //11 is a place holder for var hour
-    if (11 === index + 9) {
+    if (15 === index + 9) {
       $(this).addClass("present");
+      //sets the time block class to future all element after if statement will be effected
+      timeBlockClass = "future";
     }
   });
   //sets time to header of app
