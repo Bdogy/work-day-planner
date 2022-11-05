@@ -3,10 +3,12 @@
 // in the html.
 
 //set current time to planner
+// var hour = dayjs().get("hour");
 var hour = dayjs().get("hour");
 var timeBlock = $(".time-block");
 var saveButton = $(".saveBtn");
-currentDay = $("#currentDay");
+var currentDay = $("#currentDay");
+var main = $("main");
 
 var pmConverter = function () {
   if (hour > 12) {
@@ -41,6 +43,10 @@ $(function () {
   timeBlock.each(function (index) {
     console.log(index);
     //loops through time blocks
+    //11 is a place holder for var hour
+    if (11 === index + 9) {
+      $(this).addClass("present");
+    }
   });
   //sets time to header of app
   //loop 9 times for each time section then check if the current count is = to the current hour. if so apply current time. for ever time till 17 thats above thr current time apply future class to those elements
