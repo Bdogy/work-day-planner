@@ -5,6 +5,7 @@
 //set current time to planner
 var timeBlockClass = "";
 var hour = dayjs().get("hour");
+var month = dayjs().get("month") + 1;
 // var minute = dayjs().get("minute");
 var minute = String(dayjs().get("minute"));
 var timeBlock = $(".time-block");
@@ -31,7 +32,7 @@ var doubleDigitMinute = function () {
 };
 //todays date and time
 var todaysDate =
-  dayjs().get("month + 1") +
+  month +
   "/" +
   dayjs().get("date") +
   "/" +
