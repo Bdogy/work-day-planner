@@ -9,6 +9,6 @@ This is a work day planner application. depending on the time it will say if tas
 Link to the github page:
 link
 
-## Screen shots
+## Screenshots
 
 ![Alt text](screenshots/screenshot1.png)
