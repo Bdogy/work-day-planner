@@ -3,9 +3,10 @@
 // in the html.
 
 //set current time to planner
-// var hour = dayjs().get("hour");
 var timeBlockClass = "";
 var hour = dayjs().get("hour");
+// var minute = dayjs().get("minute");
+var minute = String(dayjs().get("minute"));
 var timeBlock = $(".time-block");
 var saveButton = $(".saveBtn");
 var currentDay = $("#currentDay");
@@ -17,17 +18,28 @@ var pmConverter = function () {
   }
   return hour;
 };
+
+var doubleDigitMinute = function () {
+  //fixes minute from return 12;1 to 12:01
+  //turns minute into arr
+  minute = minute.split("");
+  if (minute.length === 1) {
+    //adds 0 if arr length is = to 1
+    minute.unshift("0");
+  }
+  return minute.join("");
+};
 //todays date and time
 var todaysDate =
-  dayjs().get("date") +
-  "/" +
   dayjs().get("month") +
+  "/" +
+  dayjs().get("date") +
   "/" +
   dayjs().get("year") +
   " " +
   pmConverter() +
   ":" +
-  dayjs().get("minute");
+  doubleDigitMinute();
 
 saveButton.click(function () {
   var savedClick = $(event.target);
@@ -39,6 +51,7 @@ saveButton.click(function () {
 });
 //runs immediately
 $(function () {
+  //sets p element in header to current time
   currentDay.text(todaysDate);
   timeBlock.each(function (index) {
     $(this).addClass(timeBlockClass);
