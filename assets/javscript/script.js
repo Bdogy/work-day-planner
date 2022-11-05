@@ -51,6 +51,7 @@ saveButton.click(function () {
 });
 //runs immediately
 $(function () {
+  var hour = dayjs().get("hour");
   //sets p element in header to current time
   currentDay.text(todaysDate);
   timeBlock.each(function (index) {
@@ -67,6 +68,7 @@ $(function () {
     //11 is a place holder for var hour
     if (hour === index + 9) {
       $(this).addClass("present");
+      console.log("this");
       //sets the time block class to future all element after if statement will be effected
       timeBlockClass = "future";
     }
