@@ -39,8 +39,9 @@ saveButton.click(function () {
     JSON.stringify(store)
   );
 });
-
+//runs immediately
 $(function () {
+  currentDay.text(todaysDate);
   timeBlock.each(function (index) {
     $(this).addClass(timeBlockClass);
     //loops through time blocks
@@ -51,6 +52,7 @@ $(function () {
       timeBlockClass = "future";
     }
   });
+
   //sets time to header of app
   //loop 9 times for each time section then check if the current count is = to the current hour. if so apply current time. for ever time till 17 thats above thr current time apply future class to those elements
   // TODO: Add a listener for click events on the save button. This code should
